@@ -1,7 +1,6 @@
 {
   "name": "my-pug-cli",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,9 @@
     "url": "git@git.mmuugg.com:wun_bj_zhanghui/my-pug-cli.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "gulp-sass": "^4.0.1"
+  }
 }
