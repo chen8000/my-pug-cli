@@ -13,7 +13,6 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "gulp-less": "^3.5.0",
     "gulp-sass": "^4.0.1"
   }
 }
