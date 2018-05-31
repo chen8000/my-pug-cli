@@ -1,9 +1,13 @@
-.body{
+body{
     div{
         p{
             color:red;
             background:red;
             font-size:12px;
+            width:100px;
+            height:200px;
+            border:1px solid red;
+            
         }
     }
 }
