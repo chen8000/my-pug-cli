@@ -3,6 +3,7 @@
 // require() 模块
 const gulp = require('gulp');
 const scss = require('gulp-sass');
+const del = require('del');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
@@ -25,6 +26,11 @@ gulp.task('sass',() => {
         .pipe(gulp.dest('dist/style/'))
 });
 
+
+//定义删除任务,删除dist文件，起到清除缓存的作用
+gulp.task('clean',del.bind(null, ['dist']));
+
+
 //定义browserSync任务
 //静态服务器
 gulp.task("serve",['default'],()=>{
@@ -32,7 +38,7 @@ gulp.task("serve",['default'],()=>{
         server:"./dist"
     });
     gulp.watch('src/scss/*.scss',['sass']);
-    gulp.watch('src/*.html').on('change',reload);
+    gulp.watch('src/*.html',['html']).on('change',reload);
 });
 
 
