@@ -1,8 +1,7 @@
-
-
 // require() 模块
 const gulp = require('gulp');
 const scss = require('gulp-sass');
+const pug = require('gulp-pug');
 const babel = require('gulp-babel');
 const del = require('del');
 const browserSync = require('browser-sync').create();
