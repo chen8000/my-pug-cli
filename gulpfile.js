@@ -13,7 +13,6 @@ gulp.task('pug',()=>{
     gulp.src('src/**/*.pug')
         .pipe(pug())
         .pipe(gulp.dest('dist/'))
-        .pipe(reload({stream: true}));
 });
 // scss [页面单独的scss]
 gulp.task('scss',() => {
@@ -46,7 +45,6 @@ gulp.task('babel',()=>{
 gulp.task('img',()=>{
     gulp.src('src/**/images/*')
         .pipe(gulp.dest('dist/'))
-        .pipe(reload({stream: true}));
 })
 
 
@@ -55,7 +53,6 @@ gulp.task('img',()=>{
 gulp.task('commonFonts',()=>{
     gulp.src('src/common/fonts/*')
         .pipe(gulp.dest('dist/common/fonts/'))
-        .pipe(reload({stream: true}));
 });
 // babel
 gulp.task('commonBabel',()=>{
@@ -78,25 +75,22 @@ gulp.task('commonPug',()=>{
     gulp.src('src/*.pug')
         .pipe(pug())
         .pipe(gulp.dest('dist/'))
-        .pipe(reload({stream: true}));
 });
 //images
 gulp.task('commonImg',()=>{
     gulp.src('src/common/images/*')
         .pipe(gulp.dest('dist/common/images/'))
-        .pipe(reload({stream: true}));
 });
 //headfoot
 gulp.task('headFootPug',()=>{
     gulp.src('src/headfoot/*.pug')
         .pipe(pug())
         .pipe(gulp.dest('dist/headfoot/'))
-        .pipe(reload({stream: true}));
 })
 
 //定义browserSync任务
 //静态服务器
-gulp.task("serve",['default'],()=>{
+gulp.task("serve",['default'],function (){
     browserSync.init({
         server:{
             baseDir: "./dist"
@@ -107,15 +101,17 @@ gulp.task("serve",['default'],()=>{
     gulp.watch('src/**/scss/*.scss',['scss']);
     gulp.watch('src/**/js/*.js',['babel']);
     gulp.watch('src/**/images/*',['img']);
-    gulp.watch('src/**/*.pug',['pug']).on('change',reload);
+    gulp.watch('src/**/*.pug',['pug']);
 
-    //公共
+    //common
     gulp.watch('src/common/headfoot/*.pug',['headFootPug']);
     gulp.watch('src/common/images/*',['commonImg']);
     gulp.watch('src/common/js/*.js',['commonBabel']);
     gulp.watch('src/common/scss/*.scss',['commonScss']);
     gulp.watch('src/*.pug',['commonPug']);
     gulp.watch('src/common/fonts/*',['commonFonts']);
+
+    // gulp.watch('./src/**').on('change',reload);
 
 });
 
