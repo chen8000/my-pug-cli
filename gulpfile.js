@@ -6,6 +6,8 @@ const babel = require('gulp-babel');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
+
+
 // pug [页面单独的pug]
 gulp.task('pug',()=>{
     gulp.src('src/**/*.pug')
@@ -17,7 +19,7 @@ gulp.task('pug',()=>{
 gulp.task('scss',() => {
 
     //去拿文件
-    gulp.src('src/**/scss/*.scss')
+    gulp.src('src/**/style/*.scss')
 
         //执行编译文件的方法
         .pipe(scss())
@@ -66,9 +68,9 @@ gulp.task('commonBabel',()=>{
 });
 //sass
 gulp.task('commonScss',()=>{
-    gulp.src('src/common/scss/*.scss')
+    gulp.src('src/common/style/*.scss')
         .pipe(scss())
-        .pipe(gulp.dest('dist/common/css/'))
+        .pipe(gulp.dest('dist/common/style/'))
         .pipe(reload({stream: true}));
 });
 //pug
@@ -95,7 +97,7 @@ gulp.task("serve",['default'],function (){
     });
 
     //监听独立页面
-    gulp.watch('src/**/scss/*.scss',['scss']);
+    gulp.watch('src/**/style/*.scss',['scss']);
     gulp.watch('src/**/js/*.js',['babel']);
     gulp.watch('src/**/images/*',['img']);
     gulp.watch('src/**/*.pug',['pug']);
@@ -103,7 +105,7 @@ gulp.task("serve",['default'],function (){
     //common
     gulp.watch('src/common/images/*',['commonImg']);
     gulp.watch('src/common/js/*.js',['commonBabel']);
-    gulp.watch('src/common/scss/*.scss',['commonScss']);
+    gulp.watch('src/common/style/*.scss',['commonScss']);
     gulp.watch('src/*.pug',['commonPug']);
     gulp.watch('src/common/fonts/*',['commonFonts']);
     
