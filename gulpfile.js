@@ -3,9 +3,19 @@ const gulp = require('gulp');
 const scss = require('gulp-sass');
 const pug = require('gulp-pug');
 const babel = require('gulp-babel');
-const del = require('del');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
+const gulpif = require('gulp-if');
+const del = require('del');
+
+// 命令行传参
+const uglify = require('gulp-uglify');
+const minimist = require('minimist');
+const knownOptions = {default: { component: process.env.NODE_ENV}};
+const options = minimist(process.argv.slice(2), knownOptions);
+
+//修改文件名
+const rename = require('gulp-rename');
 
 
 // pug [页面单独的pug]
@@ -127,6 +137,20 @@ gulp.task('default',[
     'commonImg',
     'commonFonts'
 ]);
+
+//create 创建模块
+gulp.task('create', ()=>{
+    gulp.src('components/**/*')
+        .pipe(rename((path)=>{
+            if(path.extname != '.pug'){
+                path.basename = options.component;
+            }
+        }))
+        .pipe(gulp.dest('src/'+options.component+'/'))
+});
+//del 删除模块
+gulp.task('delete',del.bind(null,['src/'+options.component]));
+
 
 
 
