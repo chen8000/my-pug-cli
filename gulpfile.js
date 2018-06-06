@@ -20,7 +20,7 @@ const rename = require('gulp-rename');
 // pug [页面单独的pug]
 gulp.task('pug',()=>{
     gulp.src('src/**/*.pug')
-        .pipe(pug())
+        .pipe(pug({pretty: true}))
         .pipe(gulp.dest('dist/'))
         .pipe(reload({stream: true}));
 });
@@ -85,7 +85,7 @@ gulp.task('commonScss',()=>{
 //pug
 gulp.task('commonPug',()=>{
     gulp.src('src/*.pug')
-        .pipe(pug())
+        .pipe(pug({pretty: true}))
         .pipe(gulp.dest('dist/'))
         .pipe(reload({stream: true}));
 });
