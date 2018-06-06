@@ -13,7 +13,24 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+<<<<<<< HEAD
     "gulp-less": "^3.5.0",
     "gulp-sass": "^4.0.1"
+=======
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "minimist": "^1.2.0"
+  },
+  "dependencies": {
+    "del": "^3.0.0"
+>>>>>>> develop
   }
 }
