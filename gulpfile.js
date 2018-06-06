@@ -5,7 +5,6 @@ const pug = require('gulp-pug');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
-const gulpif = require('gulp-if');
 const del = require('del');
 
 // 命令行传参
