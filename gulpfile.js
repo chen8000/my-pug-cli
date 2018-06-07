@@ -10,7 +10,6 @@ const reload = browserSync.reload;
 const del = require('del');
 
 // 命令行传参
-const uglify = require('gulp-uglify');
 const minimist = require('minimist');
 const knownOptions = {default: { component: process.env.NODE_ENV}};
 const options = minimist(process.argv.slice(2), knownOptions);
