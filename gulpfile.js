@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const scss = require('gulp-sass');
 const pug = require('gulp-pug');
 const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 const del = require('del');
@@ -46,6 +47,7 @@ gulp.task('babel',()=>{
         .pipe(babel({
             presets:['env']
         }))
+        .pipe(uglify())
         .pipe(gulp.dest('dist/'))
 
         .pipe(reload({stream: true}));
@@ -72,6 +74,7 @@ gulp.task('commonBabel',()=>{
         .pipe(babel({
             presets:['env']
         }))
+        .pipe(uglify())
         .pipe(gulp.dest('dist/common/js/'))
         .pipe(reload({stream: true}));
 });
