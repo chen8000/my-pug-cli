@@ -1,6 +1,7 @@
 // require() 模块
 const gulp = require('gulp');
 const scss = require('gulp-sass');
+const cleanCss = require('gulp-clean-css');
 const pug = require('gulp-pug');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
@@ -34,6 +35,9 @@ gulp.task('scss',() => {
         //执行编译文件的方法
         .pipe(scss())
 
+        //压缩css
+        .pipe(cleanCss())
+
         //把文件放到指定位置
         .pipe(gulp.dest('dist/'))
         
@@ -47,7 +51,9 @@ gulp.task('babel',()=>{
         .pipe(babel({
             presets:['env']
         }))
+        //压缩js
         .pipe(uglify())
+        
         .pipe(gulp.dest('dist/'))
 
         .pipe(reload({stream: true}));
@@ -82,6 +88,7 @@ gulp.task('commonBabel',()=>{
 gulp.task('commonScss',()=>{
     gulp.src('src/common/style/*.scss')
         .pipe(scss())
+        .pipe(cleanCss())
         .pipe(gulp.dest('dist/common/style/'))
         .pipe(reload({stream: true}));
 });
